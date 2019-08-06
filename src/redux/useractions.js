@@ -15,6 +15,26 @@ function addUser(user) {
     }
 }
 
+function loginUser(user) {
+    debugger
+    return (dispatch) => {
+        debugger
+        fetch("http://localhost:3000/api/v1/login", {
+            method: "POST", 
+            headers: {
+                "accepts": "application/json",
+                "content-type": "application/json"      
+            },
+            body: JSON.stringify({user})
+        })
+        .then(res => res.json())
+        .then(user => {
+            dispatch({type:"LOGIN_USER", user: user})
+        })
+    }
+}
+
 export {
-    addUser
+    addUser,
+    loginUser
 }

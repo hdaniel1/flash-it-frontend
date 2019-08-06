@@ -5,16 +5,16 @@ import ProfileSetupForm from '../components/ProfileSetupForm'
 import '../styles/App.css';
 import {Route, Redirect, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {addUser} from '../redux/useractions'
+import {addUser, loginUser} from '../redux/useractions'
 
 
 function App(props) {
 
-  const {user, addUser} = props
+  const {user, addUser, loginUser} = props
 
   const redirectToHomePage = () => <Redirect to={'/home'} />
 
-  const showLoginPage = () => !user ? <LoginForm /> : <Redirect to='/home' />
+  const showLoginPage = () => !user ? <LoginForm loginUser={loginUser}/> : <Redirect to='/home' />
 
   const showSetupPage = () => !user ? <ProfileSetupForm addUser={addUser}/> : <Redirect to='/home' />
 
@@ -32,4 +32,4 @@ function App(props) {
   )
 }
 
-export default connect(store => ({user: store.user}), {addUser})(App)
+export default connect(store => ({user: store.user}), {addUser, loginUser})(App)
