@@ -47,13 +47,13 @@ export default function ProfileSetupForm(props) {
 
   const classes = useStyles();
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    e.preventDefault()
     let newUser = {
-      firstName: firstName, 
+      first_name: firstName, 
       username: username, 
       password: password
     }
-    debugger
     props.addUser(newUser)
   }
 
@@ -114,7 +114,7 @@ export default function ProfileSetupForm(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => handleAdd()}
+            onClick={(e) => handleAdd(e)}
           >
             Sign Up
           </Button>

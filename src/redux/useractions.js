@@ -9,6 +9,9 @@ function addUser(user) {
             body: JSON.stringify({user})
         })
         .then(res => res.json())
+        .then(user => {
+            dispatch({type:"LOGIN_USER", user: user})
+        })
     }
 }
 
