@@ -40,7 +40,7 @@ function CategoryPage() {
     return (
         <React.Fragment>
             <Navbar />
-            <Button onClick={handleOpen} variant="contained" size="large" fullWidth component="span" className={classes.root}>Add a Category</Button>
+            <Button disableRipple onClick={handleOpen} variant="contained" size="large" fullWidth component="span" className={classes.root}>Add a Category</Button>
             <Modal aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description" open={open} onClose={handleOpen}>
                 <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
                     <div className={classes.paper} style={{right:0, left:0}}>
