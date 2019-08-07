@@ -7,7 +7,6 @@ import {Route, Redirect, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {addUser, loginUser} from '../redux/useractions'
 
-
 function App(props) {
 
   const {user, addUser, loginUser} = props
