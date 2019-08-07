@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Navbar from '../components/Navbar'
 import Modal from '@material-ui/core/Modal';
+import Slide from '@material-ui/core/Slide';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -27,14 +28,12 @@ const useStyles = makeStyles(theme => ({
 function CategoryPage() {
 
     const [open, setOpen] = React.useState(false);
+    const [checked, setChecked] = React.useState(false);
 
     const handleOpen = () => {
-        setOpen(true);
+        setOpen(prev => !prev);
+        setChecked(prev => !prev);
       };
-
-    const handleClose = () => {
-    setOpen(false);
-    };
 
     const classes = useStyles();
 
@@ -42,16 +41,13 @@ function CategoryPage() {
         <React.Fragment>
             <Navbar />
             <Button onClick={handleOpen} variant="contained" size="large" fullWidth component="span" className={classes.root}>Add a Category</Button>
-            <Modal
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-                open={open}
-                onClose={handleClose}
-            >
-                <div className={classes.paper} style={{right:0, left:0}}>
-                <h2 id="simple-modal-title">Text in a modal</h2>
-                <p id="simple-modal-description">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-                </div>
+            <Modal aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description" open={open} onClose={handleOpen}>
+                <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
+                    <div className={classes.paper} style={{right:0, left:0}}>
+                        <h2 id="simple-modal-title">Text in a modal</h2>
+                        <p id="simple-modal-description">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                    </div>
+                </Slide>
             </Modal>
         </React.Fragment>
     )
