@@ -78,7 +78,7 @@ export default function LoginForm(props) {
             required
             fullWidth
             id="username"
-            label="username"
+            label="Username"
             name="username"
             autoComplete="username"
             autoFocus
